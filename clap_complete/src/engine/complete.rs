@@ -248,6 +248,7 @@ fn complete_option(
     cmd: &clap::Command,
     current_dir: Option<&std::path::Path>,
 ) -> Vec<CompletionCandidate> {
+    debug!("complete_option: arg={arg:?}, current_dir={current_dir:?}");
     let mut completions = Vec::<CompletionCandidate>::new();
     if arg.is_empty() {
         completions.extend(longs_and_visible_aliases(cmd));
@@ -338,6 +339,7 @@ fn complete_option(
             }
         }
     }
+    debug!("complete_option: completions={completions:?}");
     completions
 }
 
@@ -425,6 +427,7 @@ fn complete_arg_value(
         })
         .collect();
 
+    debug!("complete_arg_value: values={values:?}");
     values
 }
 
